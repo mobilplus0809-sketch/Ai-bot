@@ -1,52 +1,41 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Signals</title>
-  <style>
-    * { box-sizing: border-box; font-family: Arial, sans-serif; }
-    body {
-      margin: 0;
-      background: #0e1116;
-      color: #f3f4f6;
-      padding: 16px;
-    }
-    .card {
-      max-width: 480px;
-      margin: 0 auto;
-      background: #161b22;
-      border: 1px solid #2a313c;
-      border-radius: 12px;
-      padding: 16px;
-    }
-    h1 { margin: 0 0 12px; font-size: 20px; }
-    .row { display: flex; gap: 8px; margin-bottom: 12px; }
-    select, button {
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid #30363d;
-      font-size: 14px;
-    }
-    select { flex: 1; background: #0e1116; color: #fff; }
-    button {
-      background: #238636;
-      color: #fff;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    .signal-box {
-      background: #0e1116;
-      border-radius: 10px;
-      padding: 14px;
-      border: 1px solid #262c36;
-    }
-    .badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-    .up { background: #133820;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Signals</title>
+<style>
+body{margin:0;background:#0e1116;color:#fff;font-family:Arial;padding:16px}
+.box{max-width:440px;margin:auto;background:#161b22;padding:16px;border-radius:12px;border:1px solid #30363d}
+select,button{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #30363d;background:#0e1116;color:#fff;font-size:16px}
+button{background:#238636;border:none;font-weight:bold}
+#res{margin-top:16px;padding:14px;background:#0e1116;border-radius:8px;border:1px solid #262c36}
+.up{color:#3fb950;font-weight:bold;font-size:20px}
+.dn{color:#f85149;font-weight:bold;font-size:20px}
+</style>
+</head>
+<body>
+<div class="box">
+<h2>AI Trading Signals</h2>
+<select id="p">
+<option>EUR/USD</option>
+<option>GBP/USD</option>
+<option>USD/JPY</option>
+<option>BTC/USDT</option>
+</select>
+<select id="t">
+<option>30s</option>
+<option>1m</option>
+<option>5m</option>
+</select>
+<button onclick="go()">ПОЛУЧИТЬ СИГНАЛ</button>
+<div id="res">Нажми кнопку выше</div>
+</div>
+<script>
+function go(){
+let p=document.getElementById('p').value,t=document.getElementById('t').value,u=Math.random()>=.5,c=Math.floor(Math.random()*18)+76;
+document.getElementById('res').innerHTML=`<div class="${u?'up':'dn'}">${u?'ВВЕРХ (CALL)':'ВНИЗ (PUT)'}</div><div>${p} • ${t} • Уверенность: ${c}%</div>`
+}
+</script>
+</body>
+</html>
